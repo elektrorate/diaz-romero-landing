@@ -16,10 +16,10 @@ import {
   X,
 } from 'lucide-react';
 
-const brandHeader = '/logo-chemita.png';
-const heroImage = '/hero-chemita.jpg.png';
-const patrimonyDetail = '/assets/patrimony-detail.jpg';
-const legalDetail = '/assets/legal-detail.jpg';
+const brandHeader = `${import.meta.env.BASE_URL}logo-chemita.png`;
+const heroImage = `${import.meta.env.BASE_URL}hero-chemita.jpg.png`;
+const patrimonyDetail = `${import.meta.env.BASE_URL}assets/patrimony-detail.jpg`;
+const legalDetail = `${import.meta.env.BASE_URL}assets/legal-detail.jpg`;
 const phoneUs = '+17869403621';
 const phonePe = '+51997930932';
 const email = 'diazyromerosolucionespatrimonialesperu@gmail.com';
