@@ -185,7 +185,11 @@ body {
 .people-quote em { color: hsl(var(--accent)); font-style: normal; }
 .people-copy { margin-top: 26px; color: hsl(var(--muted-foreground)); font-size: 14px; line-height: 1.7; }
 .attorney-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.attorney-card { position: relative; overflow: hidden; background: hsl(var(--secondary)); min-height: 330px; padding: 23px; display: flex; flex-direction: column; justify-content: flex-end; }
+.attorney-card { position: relative; overflow: hidden; background: hsl(var(--secondary)); min-height: 330px; padding: 0; display: flex; flex-direction: column; justify-content: flex-end; }
+.attorney-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); }
+.attorney-card-body { position: relative; z-index: 2; padding: 23px; background: linear-gradient(to top, hsl(var(--primary) / .82), hsl(var(--primary) / .28) 55%, transparent); }
+.attorney-card-body h3, .attorney-card-body p { color: hsl(var(--primary-foreground)); }
+.attorney-card-body > span { color: hsl(var(--primary-foreground) / .78); }
 .attorney-monogram { position: absolute; top: 24px; right: 26px; color: hsl(var(--primary) / .14); font: 700 105px/.8 var(--app-font-serif); letter-spacing: -.1em; }
 .attorney-line { width: 36px; height: 2px; background: hsl(var(--accent)); margin-bottom: 15px; }
 .attorney-card h3 { margin: 0; font: 600 28px var(--app-font-serif); color: hsl(var(--primary)); }

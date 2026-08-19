@@ -20,6 +20,8 @@ const brandHeader = `${import.meta.env.BASE_URL}logo-chemita.png`;
 const heroImage = `${import.meta.env.BASE_URL}hero-chemita.jpg.png`;
 const patrimonyDetail = `${import.meta.env.BASE_URL}assets/patrimony-detail.jpg`;
 const legalDetail = `${import.meta.env.BASE_URL}assets/legal-detail.jpg`;
+const attorneyYracema = `${import.meta.env.BASE_URL}yracema.png`;
+const attorneyMarlene = `${import.meta.env.BASE_URL}marlene.png`;
 const phoneUs = '+17869403621';
 const phonePe = '+51997930932';
 const email = 'diazyromerosolucionespatrimonialesperu@gmail.com';
@@ -205,10 +207,12 @@ function App() {
             </div>
             <div className="attorney-grid reveal delay-1">
               <article className="attorney-card" data-testid="card-attorney-yraza">
-                <span className="attorney-monogram">YD</span><div className="attorney-line" /><h3>Yracema Díaz</h3><span>Abogada · Soluciones patrimoniales</span><p>Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.</p>
+                <img src={attorneyYracema} alt="Yracema Díaz" className="attorney-photo" />
+                <div className="attorney-card-body"><div className="attorney-line" /><h3>Yracema Díaz</h3><span>Abogada · Soluciones patrimoniales</span><p>Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.</p></div>
               </article>
               <article className="attorney-card" data-testid="card-attorney-marlene">
-                <span className="attorney-monogram">MR</span><div className="attorney-line" /><h3>Marlene Romero</h3><span>Abogada · Soluciones patrimoniales</span><p>Acompañamiento cercano para que cada trámite tenga sentido para su familia.</p>
+                <img src={attorneyMarlene} alt="Marlene Romero" className="attorney-photo" />
+                <div className="attorney-card-body"><div className="attorney-line" /><h3>Marlene Romero</h3><span>Abogada · Soluciones patrimoniales</span><p>Acompañamiento cercano para que cada trámite tenga sentido para su familia.</p></div>
               </article>
             </div>
           </div>
