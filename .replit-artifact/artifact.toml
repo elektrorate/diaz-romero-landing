@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Díaz & Romero | Soluciones Patrimoniales"
+description = "Landing page profesional para Díaz & Romero, firma de soluciones patrimoniales Perú–EE. UU., con presentación de servicios legales, contacto y asesoría virtual."
+version = "1.0.0"
+id = "artifacts/diaz-romero-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23984
+
+[services.development]
+run = "pnpm --filter @workspace/diaz-romero-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/diaz-romero-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/diaz-romero-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23984"
+BASE_PATH = "/"
