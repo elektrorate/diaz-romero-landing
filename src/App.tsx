@@ -1,18 +1,22 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import {
   ArrowDown,
   ArrowRight,
   Check,
   ChevronDown,
+  FileCheck,
   FileText,
+  FolderOpen,
   Globe2,
   Handshake,
   Mail,
   MapPin,
   Menu,
+  MessageSquare,
   Phone,
   Scale,
   ShieldCheck,
+  Users,
   X,
 } from 'lucide-react';
 
@@ -79,6 +83,15 @@ const processSteps = [
   ['04', 'Gestionamos', 'Nos encargamos del proceso en Perú y le mantenemos al tanto.'],
 ];
 
+const processTimeline = [
+  { number: '01', title: 'Primer contacto', desc: 'Escuchamos tu caso y entendemos tu necesidad.', Icon: MessageSquare },
+  { number: '02', title: 'Evaluación del caso', desc: 'Analizamos tu situación y la documentación existente.', Icon: FolderOpen },
+  { number: '03', title: 'Estrategia y plan de acción', desc: 'Diseñamos la mejor estrategia legal según tu objetivo.', Icon: FileText },
+  { number: '04', title: 'Gestión legal', desc: 'Realizamos los trámites y acciones necesarias para desarrollar tu caso.', Icon: Scale },
+  { number: '05', title: 'Resolución', desc: 'Te acompañamos hasta obtener y formalizar la solución correspondiente.', Icon: FileCheck },
+  { number: '06', title: 'Seguimiento', desc: 'Seguimos disponibles para orientarte incluso después de finalizado el proceso.', Icon: Users },
+];
+
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
@@ -89,6 +102,26 @@ function App() {
   const [openService, setOpenService] = useState<number | null>(null);
   const [openAttorney, setOpenAttorney] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [openProcess, setOpenProcess] = useState(false);
+  const processTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const processCloseRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!openProcess) return;
+    const prev = document.activeElement as HTMLElement | null;
+    processCloseRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenProcess(false);
+      if (e.key === 'Tab') { e.preventDefault(); processCloseRef.current?.focus(); }
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+      (prev ?? processTriggerRef.current)?.focus();
+    };
+  }, [openProcess]);
 
   useEffect(() => {
     if (openService === null) return;
@@ -220,6 +253,9 @@ function App() {
               {processSteps.map(([number, title, description]) => <div className="process-card" key={number} data-testid={`process-card-${number}`}><span className="process-num">{number}</span><h3>{title}</h3><p>{description}</p></div>)}
             </div>
             <div className="bridge-note reveal delay-2"><strong>Usted permanece en Estados Unidos.</strong><span>Nosotros nos ocupamos de que su patrimonio esté presente en Perú.</span><Globe2 className="text-[hsl(var(--accent))]" size={25} /></div>
+            <div className="process-cta-row reveal delay-2">
+              <button type="button" className="gold-button" onClick={() => setOpenProcess(true)} ref={processTriggerRef} data-testid="button-open-process-timeline">Ver cómo trabajamos <ArrowRight size={15} /></button>
+            </div>
           </div>
         </section>
 
@@ -322,6 +358,32 @@ function App() {
           <p>{serviceDetails[openService]}</p>
         </div>
       </div>}
+
+      {openProcess && (
+        <div className="process-modal-overlay" onClick={() => setOpenProcess(false)} data-testid="process-modal">
+          <div className="process-modal-panel" role="dialog" aria-modal="true" aria-labelledby="process-modal-title" onClick={(e) => e.stopPropagation()} tabIndex={-1}>
+            <button type="button" className="process-modal-close" ref={processCloseRef} onClick={() => setOpenProcess(false)} aria-label="Cerrar" data-testid="button-process-close"><X size={18} /></button>
+            <span className="eyebrow">Nuestro proceso</span>
+            <h2 id="process-modal-title">Así te acompañamos</h2>
+            <p className="process-modal-intro">Un proceso claro, cercano y estratégico para ayudarte a resolver tu situación con seguridad jurídica.</p>
+            <ol className="process-timeline">
+              {processTimeline.map((step) => {
+                const Icon = step.Icon;
+                return (
+                  <li className="pt-step" key={step.number}>
+                    <div className="pt-icon" aria-hidden="true"><Icon size={18} strokeWidth={1.5} /></div>
+                    <div className="pt-copy">
+                      <span className="pt-num">{step.number}</span>
+                      <h4>{step.title}</h4>
+                      <p>{step.desc}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <div className="container-wide">
