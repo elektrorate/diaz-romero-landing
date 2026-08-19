@@ -114,10 +114,10 @@ body {
 .dark-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); padding: 15px 20px; font-size: 13px; font-weight: 700; transition: transform .25s ease, background .25s ease; }
 .dark-button:hover { transform: translateY(-2px); background: hsl(214 56% 25%); }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr); gap: clamp(48px, 8vw, 120px); align-items: center; }
-.hero-art { position: relative; width: min(100%, 578px); min-height: 566px; justify-self: end; }
+.hero-art { position: relative; width: min(100%, 535px); min-height: 524px; justify-self: end; }
 .brand-crop { position: relative; overflow: hidden; }
 .brand-header-image { display: block; height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: center; }
-.hero-composition { position: relative; min-height: 566px; overflow: hidden; }
+.hero-composition { position: relative; min-height: 524px; overflow: hidden; }
 .hero-composition img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .brand-plaque { position: absolute; z-index: 3; top: 0; left: 0; width: min(100%, 360px); padding: 14px; background: hsl(var(--primary)); box-shadow: var(--shadow-soft); transform: rotate(-2deg); }
 .brand-plaque .brand-crop { height: 72px; border: 1px solid hsl(var(--accent) / .45); }
