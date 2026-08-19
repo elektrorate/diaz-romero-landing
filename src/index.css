@@ -186,7 +186,7 @@ body {
 .people-copy { margin-top: 26px; color: hsl(var(--muted-foreground)); font-size: 14px; line-height: 1.7; }
 .attorney-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
 .attorney-card { position: relative; overflow: hidden; background: hsl(var(--background)); min-height: 330px; display: flex; flex-direction: column; }
-.attorney-photo { width: 100%; flex: 0 0 auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center top; filter: saturate(.85); }
+.attorney-photo { width: 100%; flex: 0 0 auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; filter: saturate(.85); }
 .attorney-card-body { position: relative; z-index: 2; padding: 23px; border-top: 2px solid hsl(var(--accent)); }
 .attorney-monogram { position: absolute; top: 24px; right: 26px; color: hsl(var(--primary) / .14); font: 700 105px/.8 var(--app-font-serif); letter-spacing: -.1em; }
 .attorney-line { width: 36px; height: 2px; background: hsl(var(--accent)); margin-bottom: 15px; }
