@@ -163,7 +163,7 @@ function App() {
       <header className="fixed top-0 left-0 right-0 z-40 bg-[hsl(var(--background)/.93)] backdrop-blur-md">
         <div className="container-wide relative flex h-[180px] items-center justify-between">
           <a href="#inicio" className="flex items-center gap-3 no-underline" onClick={closeMenu} data-testid="link-brand">
-            <span className="brand-crop h-[120px] translate-y-[12px] max-sm:h-[84px] max-sm:-translate-y-[17px]">
+            <span className="brand-crop h-[108px] translate-y-[12px] max-sm:h-[75px] max-sm:-translate-y-[17px]">
               <img src={brandHeader} alt="Díaz & Romero, Soluciones Patrimoniales Perú – EE. UU." className="brand-header-image" />
             </span>
           </a>
