@@ -18,8 +18,6 @@ import {
 
 const brandHeader = `${import.meta.env.BASE_URL}logo-chemita.png`;
 const heroImage = `${import.meta.env.BASE_URL}las2.png`;
-const patrimonyDetail = `${import.meta.env.BASE_URL}assets/patrimony-detail.jpg`;
-const legalDetail = `${import.meta.env.BASE_URL}assets/legal-detail.jpg`;
 const attorneyYracema = `${import.meta.env.BASE_URL}yracema.png`;
 const attorneyMarlene = `${import.meta.env.BASE_URL}marlene.png`;
 
