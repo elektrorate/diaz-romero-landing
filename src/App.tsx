@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import {
+  ArrowDown,
   ArrowRight,
   Check,
   ChevronDown,
@@ -16,7 +17,7 @@ import {
 } from 'lucide-react';
 
 const brandHeader = `${import.meta.env.BASE_URL}logo-chemita.png`;
-const heroBg = `${import.meta.env.BASE_URL}background.png`;
+const heroImage = `${import.meta.env.BASE_URL}hero-chemita.jpg.png`;
 const patrimonyDetail = `${import.meta.env.BASE_URL}assets/patrimony-detail.jpg`;
 const legalDetail = `${import.meta.env.BASE_URL}assets/legal-detail.jpg`;
 const attorneyYracema = `${import.meta.env.BASE_URL}yracema.png`;
@@ -67,14 +68,6 @@ function scrollToId(id: string) {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [openService, setOpenService] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -108,25 +101,23 @@ function App() {
 
   return (
     <div className="site-shell noise">
-      <header className={`fixed top-0 left-0 right-0 z-40 ${scrolled ? 'header-solid' : ''}`}>
-        <div className="header-inner relative flex h-[88px] items-center justify-between">
-          <a href="#inicio" className="flex items-center no-underline" onClick={closeMenu} data-testid="link-brand">
-            <span className="brand-crop h-[60px]">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[hsl(var(--background)/.93)] backdrop-blur-md">
+        <div className="container-wide relative flex h-[180px] items-center justify-between">
+          <a href="#inicio" className="flex items-center gap-3 no-underline" onClick={closeMenu} data-testid="link-brand">
+            <span className="brand-crop h-[120px] translate-y-[12px] max-sm:h-[84px] max-sm:-translate-y-[17px]">
               <img src={brandHeader} alt="Díaz & Romero, Soluciones Patrimoniales Perú – EE. UU." className="brand-header-image" />
             </span>
           </a>
-          <nav className="desktop-nav flex items-center gap-9" aria-label="Navegación principal">
+          <nav className="desktop-nav flex items-center gap-7" aria-label="Navegación principal">
             <a className="nav-link" href="#servicios" data-testid="link-services">Servicios</a>
             <a className="nav-link" href="#proceso" data-testid="link-process">Cómo trabajamos</a>
             <a className="nav-link" href="#equipo" data-testid="link-team">El equipo</a>
             <a className="nav-link" href="#preguntas" data-testid="link-faq">Preguntas</a>
+            <a className="gold-button ml-1" href="#contacto" data-testid="link-nav-contact">Conversemos <ArrowRight size={14} /></a>
           </nav>
-          <div className="flex items-center gap-4">
-            <a className="gold-button max-sm:hidden" href="#contacto" data-testid="link-nav-contact">Conversemos <ArrowRight size={14} /></a>
-            <button className="mobile-menu-button grid h-10 w-10 place-items-center border sm:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} data-testid="button-mobile-menu">
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+          <button className="grid h-10 w-10 place-items-center border border-[hsl(var(--border))] text-[hsl(var(--primary))] sm:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} data-testid="button-mobile-menu">
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
           {menuOpen && <nav className="mobile-menu" aria-label="Menú móvil">
             <a href="#servicios" onClick={closeMenu} data-testid="link-mobile-services">Servicios</a>
             <a href="#proceso" onClick={closeMenu} data-testid="link-mobile-process">Cómo trabajamos</a>
@@ -138,28 +129,33 @@ function App() {
       </header>
 
       <main>
-        <section id="inicio" className="hero-section" style={{ backgroundImage: `url(${heroBg})` }}>
-          <div className="hero-inner">
+        <section id="inicio" className="relative pt-[72px]">
+          <div className="container-wide hero-grid min-h-[720px] py-20 lg:min-h-[800px]">
             <div className="reveal">
               <span className="eyebrow">Su patrimonio, al otro lado del mapa</span>
-              <h1 className="hero-title">
+              <h1 className="mt-7 max-w-[670px] font-display text-[clamp(49px,7vw,88px)] font-semibold leading-[.94] tracking-[-.055em] text-[hsl(var(--primary))]">
                 Lo que es suyo<br /><em className="text-[hsl(var(--accent))] not-italic">merece estar</em><br />en buenas manos.
               </h1>
-            </div>
-            <div className="hero-bottom reveal delay-2">
-              <div className="hero-actions">
-                <a className="gold-button" href="#contacto" data-testid="link-hero-contact">Solicitar orientación <ArrowRight size={15} /></a>
-                <a className="outline-button hero-outline" href={`tel:${phoneUs}`} data-testid="link-hero-phone"><Phone size={14} /> +1 786 940 3621</a>
-                <span className="hero-note">
-                  <ShieldCheck size={18} className="text-[hsl(var(--accent))]" />
-                  Atención virtual, personalizada y con seguimiento de principio a fin.
-                </span>
-              </div>
-              <p className="hero-desc">
+              <p className="mt-8 max-w-[535px] text-[16px] leading-[1.7] text-[hsl(var(--muted-foreground))]">
                 Asesoría legal patrimonial para peruanos que viven en Estados Unidos. Resolvemos en Perú lo que usted necesita proteger, regularizar o hacer crecer, sin dejar su vida en pausa.
               </p>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <a className="gold-button" href="#contacto" data-testid="link-hero-contact">Solicitar orientación <ArrowRight size={15} /></a>
+                <a className="outline-button" href={`tel:${phoneUs}`} data-testid="link-hero-phone"><Phone size={14} /> +1 786 940 3621</a>
+              </div>
+              <div className="mt-12 flex items-center gap-3 text-[11px] text-[hsl(var(--muted-foreground))]">
+                <ShieldCheck size={18} className="text-[hsl(var(--accent))]" />
+                <span>Atención virtual, personalizada y con seguimiento de principio a fin.</span>
+              </div>
+            </div>
+
+            <div className="hero-art reveal delay-2" aria-label="Identidad visual y detalle patrimonial">
+              <div className="hero-composition">
+                <img src={heroImage} alt="Díaz & Romero — Soluciones Patrimoniales Perú – EE. UU." />
+              </div>
             </div>
           </div>
+          <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-3 font-mono text-[9px] tracking-[.16em] text-[hsl(var(--muted-foreground))] lg:flex"><ArrowDown size={13} /> DESCUBRA NUESTRO ACOMPAÑAMIENTO</div>
         </section>
 
         <section id="servicios" className="section-pad">
