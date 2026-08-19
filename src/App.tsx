@@ -29,7 +29,7 @@ const attorneys = [
     photo: attorneyYracema,
     role: 'Abogada · Soluciones patrimoniales',
     short: 'Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.',
-    bio: 'Acompaña a peruanos en Estados Unidos en saneamiento físico y legal de inmuebles, sucesiones intestadas y división y partición de bienes. Su trabajo une el orden legal con la tranquilidad familiar: traduce procesos complejos en pasos claros, plazos definidos y decisiones seguras.',
+    bio: 'Abogada titulada y colegiada, con más de 20 años de experiencia en derecho previsional y una sólida trayectoria en Derecho Civil, Familia, Administrativo y Municipal. Especialista en litigios vinculados a pensiones y sucesiones, cuenta además con formación en gestión pública, derecho penal, conciliación y arbitraje. Actualmente se desempeña como Gerente General del Estudio Jurídico La Gaceta del Jubilado, con presencia a nivel nacional y más de 10.000 casos ganados.',
   },
   {
     name: 'Marlene Romero',
