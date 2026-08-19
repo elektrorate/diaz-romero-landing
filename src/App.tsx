@@ -35,6 +35,17 @@ const services = [
   ['08', 'Asesoría legal para compra de propiedades en Perú', 'Verificamos antes de que usted comprometa su inversión y su tranquilidad.'],
 ];
 
+const serviceDetails = [
+  'Ordenamos la situación física y jurídica de su inmueble para que cuente con documentación clara, actualizada y consistente. Revisamos posibles diferencias entre la realidad del predio y lo inscrito, detectamos observaciones y planteamos las acciones necesarias para regularizarlo. El objetivo es que su propiedad vuelva a tener respaldo legal, seguridad y mejores condiciones para venderse, heredarse, dividirse o utilizarse como parte de una operación patrimonial.',
+  'Cuando una persona fallece sin testamento, acompañamos a la familia durante el proceso legal necesario para determinar quiénes son sus herederos y formalizar sus derechos. Revisamos la documentación, preparamos el expediente y coordinamos las gestiones notariales o registrales correspondientes. Buscamos que el patrimonio pueda ser transferido de manera ordenada, evitando retrasos, conflictos innecesarios y dificultades posteriores para disponer de los bienes heredados.',
+  'Cuando un inmueble o patrimonio pertenece a varias personas, ayudamos a transformar esa copropiedad en una solución clara y jurídicamente viable. Analizamos la situación de cada propietario, las características de los bienes y las alternativas disponibles para llegar a una división, adjudicación o acuerdo. Nuestro objetivo es establecer derechos definidos y facilitar que cada parte pueda disponer de lo que legítimamente le corresponde.',
+  'Los conflictos patrimoniales entre familiares requieren tanto conocimiento legal como capacidad para encontrar soluciones viables. Intervenimos en situaciones de desacuerdo relacionadas con herencias, inmuebles, copropiedades o administración de bienes, buscando ordenar posiciones y proteger los derechos de cada parte. Trabajamos para alcanzar acuerdos cuando sea posible y establecer una estrategia legal clara cuando el conflicto requiere una actuación más formal.',
+  'Revisamos la documentación relacionada con su propiedad para detectar errores, omisiones, inconsistencias o situaciones que puedan impedir la realización de un trámite. Gestionamos las correcciones y procedimientos necesarios ante registros, notarías y otras entidades correspondientes. El objetivo es que la información jurídica del inmueble sea correcta y esté actualizada, permitiendo realizar futuras operaciones con mayor seguridad y evitando observaciones que puedan retrasar una venta, sucesión o transferencia.',
+  'Gestionamos la obtención de certificados y documentos emitidos en Estados Unidos que sean necesarios para realizar trámites legales o patrimoniales en Perú. Orientamos sobre el documento requerido, su solicitud, certificación, apostilla y demás formalidades cuando correspondan. Coordinamos el proceso para reducir desplazamientos y facilitar que la documentación llegue correctamente preparada para ser utilizada ante autoridades, notarías o registros peruanos.',
+  'Preparamos jurídicamente su inmueble antes de iniciar o cerrar una operación de venta. Revisamos títulos, antecedentes registrales, documentación pendiente y posibles observaciones que puedan afectar la transferencia. Si el propietario se encuentra fuera del Perú, coordinamos también poderes y documentos necesarios para facilitar el proceso. Buscamos que la operación avance con seguridad, con la documentación preparada y evitando viajes, retrasos o inconvenientes de última hora.',
+  'Antes de comprometer su dinero en la compra de una propiedad, revisamos la situación legal del inmueble y de quien lo vende. Analizamos antecedentes registrales, cargas, gravámenes, titularidad y documentación relevante para detectar posibles riesgos. También acompañamos la revisión contractual y el proceso de transferencia. Nuestro objetivo es que usted tome una decisión informada y realice su inversión con mayor seguridad jurídica y tranquilidad.',
+];
+
 const faqs = [
   ['¿Puedo iniciar el trámite sin viajar a Perú?', 'Sí. Diseñamos el proceso para personas que viven en Estados Unidos: coordinamos la revisión, documentos y gestiones en Perú, con atención virtual y seguimiento personalizado.'],
   ['¿Qué pasa si mi propiedad no está inscrita o tiene documentos pendientes?', 'Empezamos por un diagnóstico. Identificamos qué falta, qué debe corregirse y trazamos el camino legal y registral más seguro para su caso.'],
@@ -56,7 +67,15 @@ function scrollToId(id: string) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openService, setOpenService] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (openService === null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpenService(null); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [openService]);
 
   useEffect(() => {
     const elements = document.querySelectorAll('.reveal');
@@ -81,9 +100,9 @@ function App() {
   return (
     <div className="site-shell noise">
       <header className="fixed top-0 left-0 right-0 z-40 bg-[hsl(var(--background)/.93)] backdrop-blur-md">
-        <div className="container-wide relative flex h-[72px] items-center justify-between">
+        <div className="container-wide relative flex h-[180px] items-center justify-between">
           <a href="#inicio" className="flex items-center gap-3 no-underline" onClick={closeMenu} data-testid="link-brand">
-            <span className="brand-crop h-[120px] translate-y-[36px]">
+            <span className="brand-crop h-[120px] translate-y-[12px] max-sm:h-[84px] max-sm:-translate-y-[17px]">
               <img src={brandHeader} alt="Díaz & Romero, Soluciones Patrimoniales Perú – EE. UU." className="brand-header-image" />
             </span>
           </a>
@@ -152,11 +171,11 @@ function App() {
                 <p>Conocemos las preguntas que aparecen cuando una propiedad, una herencia o una copropiedad se quedan en Perú mientras la familia construye su vida en otro país.</p>
               </div>
               <div className="service-list reveal delay-2">
-                {services.map(([number, title, description]) => <div className="service-row" key={number} data-testid={`service-row-${number}`}>
+                {services.map(([number, title, description], idx) => <button type="button" className="service-row" key={number} onClick={() => setOpenService(idx)} data-testid={`service-row-${number}`}>
                   <span className="service-index">{number}</span>
                   <div><h4>{title}</h4><p>{description}</p></div>
                   <ArrowRight size={16} className="text-[hsl(var(--accent))]" />
-                </div>)}
+                </button>)}
               </div>
             </div>
           </div>
@@ -237,6 +256,15 @@ function App() {
           </div>
         </section>
       </main>
+
+      {openService !== null && <div className="service-modal" onClick={() => setOpenService(null)} role="dialog" aria-modal="true" aria-label={services[openService][1]}>
+        <div className="service-modal-panel" onClick={(e) => e.stopPropagation()}>
+          <button type="button" className="service-modal-close" onClick={() => setOpenService(null)} aria-label="Cerrar" data-testid="button-service-close"><X size={20} /></button>
+          <span className="service-index">{services[openService][0]}</span>
+          <h3>{services[openService][1]}</h3>
+          <p>{serviceDetails[openService]}</p>
+        </div>
+      </div>}
 
       <footer className="footer">
         <div className="container-wide">
