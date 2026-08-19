@@ -190,7 +190,7 @@ function App() {
       <main>
         <section id="inicio" className="relative pt-[72px]">
           <div className="container-wide hero-grid min-h-[720px] py-20 lg:min-h-[800px]">
-            <div className="reveal">
+            <div className="reveal translate-y-[15%]">
               <span className="eyebrow">Su patrimonio, al otro lado del mapa</span>
               <h1 className="mt-7 max-w-[670px] font-display text-[clamp(49px,7vw,88px)] font-semibold leading-[.94] tracking-[-.055em] text-[hsl(var(--primary))]">
                 Seguridad legal<br /><em className="text-[hsl(var(--accent))] not-italic">para su patrimonio</em><br />en Perú.
