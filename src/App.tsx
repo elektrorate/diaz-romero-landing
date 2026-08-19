@@ -41,6 +41,7 @@ const attorneys = [
 ] as const;
 const phoneUs = '+17869403621';
 const phonePe = '+51997930932';
+const phoneEs = '+34645690324';
 const email = 'diazyromerosolucionespatrimonialesperu@gmail.com';
 
 const services = [
@@ -264,6 +265,7 @@ function App() {
               <div className="contact-details">
                 <a className="contact-link" href={`tel:${phoneUs}`} data-testid="link-contact-us"><Phone size={17} /><span><small>Estados Unidos</small>+1 786 940 3621</span></a>
                 <a className="contact-link" href={`tel:${phonePe}`} data-testid="link-contact-peru"><Phone size={17} /><span><small>Perú</small>+51 997 930 932</span></a>
+                <a className="contact-link" href={`tel:${phoneEs}`} data-testid="link-contact-spain"><Phone size={17} /><span><small>España</small>+34 645 690 324</span></a>
                 <a className="contact-link" href={`mailto:${email}`} data-testid="link-contact-email"><Mail size={17} /><span><small>Correo electrónico</small>{email}</span></a>
                 <a className="contact-link" href="https://wa.me/17869403621" target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp"><Handshake size={17} /><span><small>Mensajería directa</small>Escribir por WhatsApp</span></a>
               </div>
@@ -303,7 +305,7 @@ function App() {
               <p className="mt-5 max-w-[280px]">El proceso en Perú, la tranquilidad de saber que alguien está pendiente.</p>
             </div>
             <div><h4>Explorar</h4><a href="#servicios" data-testid="link-footer-services">Servicios</a><br /><a href="#proceso" data-testid="link-footer-process">Cómo trabajamos</a><br /><a href="#equipo" data-testid="link-footer-team">Nuestro equipo</a></div>
-            <div><h4>Contacto</h4><a href={`tel:${phoneUs}`} data-testid="link-footer-us">EE. UU. +1 786 940 3621</a><br /><a href={`tel:${phonePe}`} data-testid="link-footer-pe">Perú +51 997 930 932</a><br /><a href={`mailto:${email}`} data-testid="link-footer-email">Escribir por correo</a></div>
+            <div><h4>Contacto</h4><a href={`tel:${phoneUs}`} data-testid="link-footer-us">EE. UU. +1 786 940 3621</a><br /><a href={`tel:${phonePe}`} data-testid="link-footer-pe">Perú +51 997 930 932</a><br /><a href={`tel:${phoneEs}`} data-testid="link-footer-es">España +34 645 690 324</a><br /><a href={`mailto:${email}`} data-testid="link-footer-email">Escribir por correo</a></div>
           </div>
           <div className="footer-bottom"><span>© {new Date().getFullYear()} Díaz &amp; Romero. Todos los derechos reservados.</span><span className="flex items-center gap-2"><MapPin size={12} /> Perú · Estados Unidos</span></div>
         </div>
