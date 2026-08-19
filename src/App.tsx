@@ -99,6 +99,14 @@ function App() {
   }, [openService]);
 
   useEffect(() => {
+    if (openAttorney === null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpenAttorney(null); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
+  }, [openAttorney]);
+
+  useEffect(() => {
     const elements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -233,15 +241,34 @@ function App() {
                     <h3>{attorney.name}</h3>
                     <span>{attorney.role}</span>
                     <p>{attorney.short}</p>
-                    <button className={`attorney-toggle ${openAttorney === index ? 'open' : ''}`} onClick={() => setOpenAttorney(openAttorney === index ? null : index)} aria-expanded={openAttorney === index} data-testid={`button-attorney-toggle-${index}`}>
-                      <span>{openAttorney === index ? 'Leer menos' : 'Leer más'}</span><ChevronDown size={16} />
+                    <button className="attorney-toggle" onClick={() => setOpenAttorney(index)} data-testid={`button-attorney-toggle-${index}`}>
+                      <span>Leer más</span><ArrowRight size={16} />
                     </button>
-                    {openAttorney === index && <p className="attorney-expand" data-testid={`text-attorney-bio-${index}`}>{attorney.bio}</p>}
                   </div>
                 </article>
               ))}
             </div>
           </div>
+
+          {openAttorney !== null && (() => {
+            const attorney = attorneys[openAttorney];
+            return (
+              <div className="modal-overlay" onClick={() => setOpenAttorney(null)} role="dialog" aria-modal="true" aria-label={`Perfil de ${attorney.name}`} data-testid="attorney-modal">
+                <div className="attorney-modal" onClick={(e) => e.stopPropagation()}>
+                  <button className="modal-close" onClick={() => setOpenAttorney(null)} aria-label="Cerrar" data-testid="button-close-modal"><X size={18} /></button>
+                  <div className="attorney-modal-copy">
+                    <span className="eyebrow">Perfil profesional</span>
+                    <h3>{attorney.name}</h3>
+                    <span className="attorney-modal-role">{attorney.role}</span>
+                    <p className="attorney-modal-bio" data-testid={`text-attorney-bio-${openAttorney}`}>{attorney.bio}</p>
+                  </div>
+                  <div className="attorney-modal-photo">
+                    <img src={attorney.photo} alt={attorney.name} />
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </section>
 
         <section id="preguntas" className="section-pad border-t border-[hsl(var(--border))]">
