@@ -16,7 +16,8 @@ import {
   X,
 } from 'lucide-react';
 
-const brandHeader = '/assets/brand-header.jpg';
+const brandHeader = '/logo-chemita.png';
+const heroImage = '/hero-chemita.jpg.png';
 const patrimonyDetail = '/assets/patrimony-detail.jpg';
 const legalDetail = '/assets/legal-detail.jpg';
 const phoneUs = '+17869403621';
@@ -79,10 +80,10 @@ function App() {
 
   return (
     <div className="site-shell noise">
-      <header className="fixed top-0 left-0 right-0 z-40 border-b border-[hsl(var(--border)/.65)] bg-[hsl(var(--background)/.93)] backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-40 bg-[hsl(var(--background)/.93)] backdrop-blur-md">
         <div className="container-wide relative flex h-[72px] items-center justify-between">
           <a href="#inicio" className="flex items-center gap-3 no-underline" onClick={closeMenu} data-testid="link-brand">
-            <span className="brand-crop h-10 w-[132px] sm:w-[190px]">
+            <span className="brand-crop h-[120px] translate-y-[36px]">
               <img src={brandHeader} alt="Díaz & Romero, Soluciones Patrimoniales Perú – EE. UU." className="brand-header-image" />
             </span>
           </a>
@@ -129,17 +130,7 @@ function App() {
 
             <div className="hero-art reveal delay-2" aria-label="Identidad visual y detalle patrimonial">
               <div className="hero-composition">
-                <div className="brand-plaque">
-                  <div className="brand-crop">
-                    <img src={brandHeader} alt="" className="brand-header-image" />
-                  </div>
-                  <div className="brand-caption"><span>Perú — Estados Unidos</span><span>Desde 2018</span></div>
-                </div>
-                <figure className="hero-photo">
-                  <img src={patrimonyDetail} alt="Escritura pública, llaves y mapa del Perú" />
-                </figure>
-                <div className="art-stamp">Perú<br /><span className="text-[hsl(var(--accent))]">↔</span><br />EE. UU.<small>cerca, siempre</small></div>
-                <div className="hero-corner"><Handshake size={17} /> Su proceso en Perú.<br />Usted, en Estados Unidos.</div>
+                <img src={heroImage} alt="Díaz & Romero — Soluciones Patrimoniales Perú – EE. UU." />
               </div>
             </div>
           </div>
@@ -177,10 +168,6 @@ function App() {
                 </div>)}
               </div>
             </div>
-            <div className="editorial-strip reveal delay-2">
-              <div className="editorial-thumb"><img src={legalDetail} alt="Detalle de servicios legales y contacto de la firma" /></div>
-              <div className="editorial-note"><strong>Documentos claros. Decisiones tranquilas.</strong><span>Le ayudamos a leer lo importante antes de firmar, vender, heredar o invertir.</span></div>
-            </div>
           </div>
         </section>
 
@@ -194,10 +181,6 @@ function App() {
             <div className="process-grid reveal delay-1">
               {processSteps.map(([number, title, description]) => <div className="process-card" key={number} data-testid={`process-card-${number}`}><span className="process-num">{number}</span><h3>{title}</h3><p>{description}</p></div>)}
             </div>
-            <div className="process-feature reveal delay-2">
-              <div className="process-feature-image"><img src={legalDetail} alt="Detalle de servicios y promesa de gestión legal en Perú" /></div>
-              <div className="process-feature-copy"><FileText size={27} /><p><strong>Una ruta visible en cada etapa.</strong><br />Le informamos qué estamos haciendo, qué necesitamos de usted y cuál es el siguiente movimiento, mientras su vida continúa en Estados Unidos.</p></div>
-            </div>
             <div className="bridge-note reveal delay-2"><strong>Usted permanece en Estados Unidos.</strong><span>Nosotros nos ocupamos de que su patrimonio esté presente en Perú.</span><Globe2 className="text-[hsl(var(--accent))]" size={25} /></div>
           </div>
         </section>
@@ -207,12 +190,12 @@ function App() {
             <div className="reveal">
               <span className="eyebrow">Las personas detrás del proceso</span>
               <div className="people-quote mt-9">Un patrimonio no es solo un registro. Es la historia que una familia quiere <em>cuidar.</em></div>
-              <p className="people-copy">Por eso nuestra atención no termina en una respuesta. Yraza Díaz y Marlene Romero trabajan de manera cercana, explicando lo complejo en palabras claras y acompañando cada decisión con criterio profesional.</p>
+              <p className="people-copy">Por eso nuestra atención no termina en una respuesta. Yracema Díaz y Marlene Romero trabajan de manera cercana, explicando lo complejo en palabras claras y acompañando cada decisión con criterio profesional.</p>
               <a href="#contacto" className="dark-button mt-8" data-testid="link-team-contact">Hablar con el equipo <ArrowRight size={15} /></a>
             </div>
             <div className="attorney-grid reveal delay-1">
               <article className="attorney-card" data-testid="card-attorney-yraza">
-                <span className="attorney-monogram">YD</span><div className="attorney-line" /><h3>Yraza Díaz</h3><span>Abogada · Soluciones patrimoniales</span><p>Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.</p>
+                <span className="attorney-monogram">YD</span><div className="attorney-line" /><h3>Yracema Díaz</h3><span>Abogada · Soluciones patrimoniales</span><p>Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.</p>
               </article>
               <article className="attorney-card" data-testid="card-attorney-marlene">
                 <span className="attorney-monogram">MR</span><div className="attorney-line" /><h3>Marlene Romero</h3><span>Abogada · Soluciones patrimoniales</span><p>Acompañamiento cercano para que cada trámite tenga sentido para su familia.</p>
@@ -268,7 +251,7 @@ function App() {
         <div className="container-wide">
           <div className="footer-grid">
             <div>
-              <div className="brand-crop h-[47px] w-[250px]"><img src={brandHeader} alt="Díaz & Romero" className="brand-header-image" /></div>
+              <div className="brand-crop h-[47px]"><img src={brandHeader} alt="Díaz & Romero" className="brand-header-image" /></div>
               <p className="mt-5 max-w-[280px]">El proceso en Perú, la tranquilidad de saber que alguien está pendiente.</p>
             </div>
             <div><h4>Explorar</h4><a href="#servicios" data-testid="link-footer-services">Servicios</a><br /><a href="#proceso" data-testid="link-footer-process">Cómo trabajamos</a><br /><a href="#equipo" data-testid="link-footer-team">Nuestro equipo</a></div>
