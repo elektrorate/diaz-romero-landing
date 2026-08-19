@@ -252,7 +252,7 @@ function App() {
             <div className="process-grid reveal delay-1">
               {processSteps.map(([number, title, description]) => <div className="process-card" key={number} data-testid={`process-card-${number}`}><span className="process-num">{number}</span><h3>{title}</h3><p>{description}</p></div>)}
             </div>
-            <div className="bridge-note reveal delay-2"><strong>Usted permanece en Estados Unidos.</strong><span>Nosotros nos ocupamos de que su patrimonio esté presente en Perú.</span><Globe2 className="text-[hsl(var(--accent))]" size={25} /></div>
+            <div className="bridge-note reveal delay-2"><strong>Usted está en Estados Unidos o España.</strong><span>Nosotros hacemos que su patrimonio siga presente y protegido en Perú.</span><Globe2 className="text-[hsl(var(--accent))]" size={25} /></div>
             <div className="process-cta-row reveal delay-2">
               <button type="button" className="gold-button" onClick={() => setOpenProcess(true)} ref={processTriggerRef} data-testid="button-open-process-timeline">Ver cómo trabajamos <ArrowRight size={15} /></button>
             </div>
