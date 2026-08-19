@@ -22,6 +22,23 @@ const patrimonyDetail = `${import.meta.env.BASE_URL}assets/patrimony-detail.jpg`
 const legalDetail = `${import.meta.env.BASE_URL}assets/legal-detail.jpg`;
 const attorneyYracema = `${import.meta.env.BASE_URL}yracema.png`;
 const attorneyMarlene = `${import.meta.env.BASE_URL}marlene.png`;
+
+const attorneys = [
+  {
+    name: 'Yracema Díaz',
+    photo: attorneyYracema,
+    role: 'Abogada · Soluciones patrimoniales',
+    short: 'Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.',
+    bio: 'Acompaña a peruanos en Estados Unidos en saneamiento físico y legal de inmuebles, sucesiones intestadas y división y partición de bienes. Su trabajo une el orden legal con la tranquilidad familiar: traduce procesos complejos en pasos claros, plazos definidos y decisiones seguras.',
+  },
+  {
+    name: 'Marlene Romero',
+    photo: attorneyMarlene,
+    role: 'Abogada · Soluciones patrimoniales',
+    short: 'Acompañamiento cercano para que cada trámite tenga sentido para su familia.',
+    bio: 'Se especializa en la atención virtual de familias peruanas en el exterior: declaratorias de herederos, regularización de inmuebles y partición de bienes. Se asegura de que cada persona entienda su caso, reciba seguimiento permanente y cierre cada etapa con respaldo documentado.',
+  },
+] as const;
 const phoneUs = '+17869403621';
 const phonePe = '+51997930932';
 const email = 'diazyromerosolucionespatrimonialesperu@gmail.com';
@@ -70,6 +87,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [openService, setOpenService] = useState<number | null>(null);
+  const [openAttorney, setOpenAttorney] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -206,14 +224,21 @@ function App() {
               <a href="#contacto" className="dark-button mt-8" data-testid="link-team-contact">Hablar con el equipo <ArrowRight size={15} /></a>
             </div>
             <div className="attorney-grid reveal delay-1">
-              <article className="attorney-card" data-testid="card-attorney-yraza">
-                <img src={attorneyYracema} alt="Yracema Díaz" className="attorney-photo" />
-                <div className="attorney-card-body"><div className="attorney-line" /><h3>Yracema Díaz</h3><span>Abogada · Soluciones patrimoniales</span><p>Mirada estratégica para ordenar, proteger y hacer valer sus bienes en Perú.</p></div>
-              </article>
-              <article className="attorney-card" data-testid="card-attorney-marlene">
-                <img src={attorneyMarlene} alt="Marlene Romero" className="attorney-photo" />
-                <div className="attorney-card-body"><div className="attorney-line" /><h3>Marlene Romero</h3><span>Abogada · Soluciones patrimoniales</span><p>Acompañamiento cercano para que cada trámite tenga sentido para su familia.</p></div>
-              </article>
+              {attorneys.map((attorney, index) => (
+                <article className="attorney-card" key={attorney.name} data-testid={`card-attorney-${index === 0 ? 'yraza' : 'marlene'}`}>
+                  <img src={attorney.photo} alt={attorney.name} className="attorney-photo" />
+                  <div className="attorney-card-body">
+                    <div className="attorney-line" />
+                    <h3>{attorney.name}</h3>
+                    <span>{attorney.role}</span>
+                    <p>{attorney.short}</p>
+                    <button className={`attorney-toggle ${openAttorney === index ? 'open' : ''}`} onClick={() => setOpenAttorney(openAttorney === index ? null : index)} aria-expanded={openAttorney === index} data-testid={`button-attorney-toggle-${index}`}>
+                      <span>{openAttorney === index ? 'Leer menos' : 'Leer más'}</span><ChevronDown size={16} />
+                    </button>
+                    {openAttorney === index && <p className="attorney-expand" data-testid={`text-attorney-bio-${index}`}>{attorney.bio}</p>}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

@@ -193,6 +193,11 @@ body {
 .attorney-card h3 { margin: 0; font: 600 28px var(--app-font-serif); color: hsl(var(--primary)); }
 .attorney-card span { margin-top: 5px; color: hsl(var(--muted-foreground)); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 .attorney-card p { margin: 18px 0 0; color: hsl(var(--muted-foreground)); font-size: 12px; line-height: 1.5; }
+.attorney-toggle { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 0; background: none; border: 0; color: hsl(var(--accent)); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.attorney-toggle svg { transition: transform .3s ease; }
+.attorney-toggle:hover { color: hsl(41 65% 48%); }
+.attorney-toggle.open svg { transform: rotate(180deg); }
+.attorney-card .attorney-expand { margin: 16px 0 0; border-top: 1px solid hsl(var(--border)); padding-top: 16px; }
 .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(45px, 10vw, 150px); }
 .faq-list { border-top: 1px solid hsl(var(--border)); }
 .faq-item { border-bottom: 1px solid hsl(var(--border)); }
