@@ -36,7 +36,7 @@ const attorneys = [
     photo: attorneyMarlene,
     role: 'Abogada · Soluciones patrimoniales',
     short: 'Acompañamiento cercano para que cada trámite tenga sentido para su familia.',
-    bio: 'Se especializa en la atención virtual de familias peruanas en el exterior: declaratorias de herederos, regularización de inmuebles y partición de bienes. Se asegura de que cada persona entienda su caso, reciba seguimiento permanente y cierre cada etapa con respaldo documentado.',
+    bio: 'Abogada titulada y colegiada, con sólida experiencia en Derecho Penal y Procesal Penal, especializada en la defensa y asesoría jurídica en procesos penales, elaboración de estrategias legales y representación de clientes en las distintas etapas del procedimiento. Cuenta con formación complementaria mediante diplomados, cursos de especialización y actualización profesional en materia penal, procesal y litigación, orientando su práctica a una defensa rigurosa, estratégica y personalizada.',
   },
 ] as const;
 const phoneUs = '+17869403621';
