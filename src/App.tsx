@@ -137,15 +137,6 @@ function App() {
           <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-3 font-mono text-[9px] tracking-[.16em] text-[hsl(var(--muted-foreground))] lg:flex"><ArrowDown size={13} /> DESCUBRA NUESTRO ACOMPAÑAMIENTO</div>
         </section>
 
-        <section className="trust-band" aria-label="Alcance de la firma">
-          <div className="container-wide trust-items">
-            <div className="trust-item"><Globe2 size={23} className="text-[hsl(var(--accent))]" /><div><div className="trust-number">2 países</div><div className="trust-label">Una misma mirada<br />para su patrimonio</div></div></div>
-            <div className="trust-item"><div><div className="trust-number">08</div><div className="trust-label">áreas de asesoría<br />especializada</div></div></div>
-            <div className="trust-item"><div><div className="trust-number">1:1</div><div className="trust-label">atención directa<br />y personalizada</div></div></div>
-            <div className="trust-item"><div><div className="trust-number">0</div><div className="trust-label">viajes obligatorios<br />para empezar</div></div></div>
-          </div>
-        </section>
-
         <section id="servicios" className="section-pad">
           <div className="container-wide">
             <div className="section-heading reveal">
