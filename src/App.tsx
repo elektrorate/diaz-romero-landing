@@ -193,10 +193,10 @@ function App() {
             <div className="reveal">
               <span className="eyebrow">Su patrimonio, al otro lado del mapa</span>
               <h1 className="mt-7 max-w-[670px] font-display text-[clamp(49px,7vw,88px)] font-semibold leading-[.94] tracking-[-.055em] text-[hsl(var(--primary))]">
-                Lo que es suyo<br /><em className="text-[hsl(var(--accent))] not-italic">merece estar</em><br />en buenas manos.
+                Su patrimonio en Perú,<br /><em className="text-[hsl(var(--accent))] not-italic">con la seguridad</em><br />de una gestión legal especializada.
               </h1>
               <p className="mt-8 max-w-[535px] text-[16px] leading-[1.7] text-[hsl(var(--muted-foreground))]">
-                Asesoría legal patrimonial para peruanos que viven en Estados Unidos. Resolvemos en Perú lo que usted necesita proteger, regularizar o hacer crecer, sin dejar su vida en pausa.
+                Asesoría legal patrimonial para peruanos que viven en Estados Unidos y España. Desde Perú, nos encargamos de proteger, regularizar y gestionar su patrimonio, para que usted pueda resolver lo importante con respaldo legal y seguridad, sin interrumpir la vida que ha construido en el extranjero.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <a className="gold-button" href="#contacto" data-testid="link-hero-contact">Solicitar orientación <ArrowRight size={15} /></a>
